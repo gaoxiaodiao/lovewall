@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="utf-8" /> 
+  <title>{$title}</title> 
+  <meta name="keywords" content="{$keywords}" /> 
+  <meta name="description" content="{$desc}" /> 
+  <!-- main css --> 
+  <link rel="stylesheet" href="http://7xol37.com1.z0.glb.clouddn.com/css/index.css"/> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+  <!-- html5.js for IE less than 9 --> 
+  <!--[if lt IE 9]><script src="http://7xol37.com1.z0.glb.clouddn.com/js/html5.js"></script><![endif]--> 
+ </head> 
+ <body> 
+  <div id="pagewrap"> 
+   <header id="header"> 
+    <hgroup> 
+     <div id="flash"> 
+      <object id="swftitlebar" data="http://7xol37.com1.z0.glb.clouddn.com/others/80547.swf" width="100%" height="100%" type="application/x-shockwave-flash" style="margin: -69px 0;"> <param name="wmode" value="transparent"></param> </object> 
+     </div> 
+     <h1 id="site-logo"><a href="{:C('BLOG_HOST')}">高小调博客</a></h1> 
+     <h2 id="site-description">{:C('BLOG_HOST')}</h2> 
+    </hgroup> 
+    <nav> 
+     <ul id="main-nav" class="clearfix"> 
+      <li><a href="{:U('Index/index')}">首页</a></li>
+      <volist name="nav" id="vol"> 
+       <li><a href="{:U('Index/index',array('id'=>$vol['id']))}">{$vol.name}</a></li>
+      </volist> 
+     </ul> 
+    </nav> 
+   </header> 
+   <div id="content"> 
+    <b>文章列表</b> 
+    <volist name="data" id="vol"> 
+     <article> 
+      <header> 
+       <h2 class="article-title">★★【<a href="{:U('Index/index',array('id'=>$vol['cid']))}">{$vol.cate}</a>】<a href="{:U('Single/index',array('id'=>$vol['pid']))}">{$vol.title}</a></h2> 
+      </header> 
+     </article> 
+    </volist> 
+    <div class="pagebar">
+      {$pagebar} 
+    </div> 
+   </div> 
+   <!-- /#content --> 
+   <aside id="sidebar"> 
+    <section class="widget"> 
+     <h4 class="widgettitle">
+      <center>
+       热门文章
+      </center></h4> 
+     <volist name="hotList" id="vol"> 
+      <li><a href="{:U('Single/index',array('id'=>$vol['id']))}">{$vol.title}</a></li> 
+     </volist> 
+    </section> 
+    <section class="widget"> 
+     <h4 class="widgettitle">
+      <center>
+       标签
+      </center></h4> 
+     <volist name="tagsList" id="vol"> 
+      <li><a href="{:U('Tag/index',array('id'=>$vol['id']))}">{$vol.name}({$vol.count})</a></li> 
+     </volist> 
+    </section> 
+    <section class="widget"> 
+     <h4 class="widgettitle">
+      <center>
+       猜你喜欢
+      </center></h4> 
+	 <volist name="randList" id="v"> 
+		<volist name="v" id = "vol">
+      <li><a href="{:U('Single/index',array('id'=>$vol['id']))}">{$vol.title}</a></li> 
+		</volist>
+	 </volist> 
+    </section> 
+    <!-- /.widget --> 
+   </aside> 
+   <!-- /#sidebar --> 
+   <footer id="footer"> 
+    <p>本模版由<a href="{:C('BLOG_HOST')}" style="color:#000">高小调</a>免费提供！</p> 
+    <script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?5db7cc5d7e1a7bfc2cb9fab9332cb97d";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+</script> 
+   </footer> 
+   <!-- /#footer --> 
+  </div> 
+  <!-- /#pagewrap -->  
+ </body>
+</html>

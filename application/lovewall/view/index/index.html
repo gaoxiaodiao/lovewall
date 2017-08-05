@@ -1,0 +1,16 @@
+{include file="Common/header" /}
+<div id="main">
+	<script type="text/javascript" src="/static/inc/index.js"></script>
+	{volist name="list" id="vo"}
+	<div id="Layer{$vo.id}" class="Face{$vo.face}" style='{if condition="($id != 0) AND ($id != $vo.id) "}display:none;{/if}top:{:rand(120,500)}px;left:{:rand(120,1000)}px;' onmousedown="Move(this,event)" ondblclick="Show({$vo.id})">
+		<p class="Num">字条编号:{$vo.id}<img src="/static/images/close.gif" alt="关闭" onclick="Close({$vo.id})" /></p>
+		<p class="Detail">
+			<img alt="" src="/static/images/icon2.gif" />
+			<span class="Head">{$vo.receiver}</span><br />{$vo.info}
+		</p>
+		<p class="Sign">{$vo.name}</p>
+		<p class="Date">{$vo.time|date="Y-m-d H:m:s",###}</p>
+	</div>
+	{/volist}
+</div>
+{include file="Common/footer" /}

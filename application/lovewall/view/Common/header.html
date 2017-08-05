@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>爱墙 - 字条列表 - 仿QQ爱墙免费版</title>
+<meta content="ASPK爱墙,仿QQ爱墙" name="Description" />
+{load href="/static/inc/style.css" /}
+<!--<script src="/static/inc/tinymce/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'textarea' });</script>
+  -->
+</head>
+
+<body>
+<div style="display:none;" id="aspk" onclick="Hide();"></div>
+
+<div id="header">
+	<span style="float:left;"></span>
+	<div id="banner"><a href="http//www.aspk.net" target="_blank">爱墙（仿QQ爱墙）V1.5免费版!</a></div>
+</div>
+
+<div id="menu">
+	<a href="{:url('index')}"><img src="/static/images/btn_index.gif" alt="首页" /></a>
+	<a href="{:url('index/add')}"><img src="/static/images/btn_add.gif" alt="贴字条" /></a>
+	<a href="{:url('index/lists')}"><img src="/static/images/btn_list.gif" alt="字条列表" /></a>
+	<input id="find" name="id" class="input" type="text" maxlength="10" size="15" value=" 请输入字条编号 " onclick="this.value='';" />
+	<input type="image" src="/static/images/btn_search.gif" alt="搜索" onclick="find();" />
+</div>
+<script type="text/javascript">
+
+function find(){
+	var noStr = document.getElementById("find").value;
+	var no = parseInt(noStr);
+	if(isNaN(no)){
+		alert("[字条编号]肯定是数字啊");
+		return;
+	}else if(no < 1){
+		alert("[字条编号]肯定是整数啊");
+		return;
+	}else{
+		window.location.href = "http://localhost/lovewall/index/index/id/"+no+".html";
+	}
+}
+
+</script>

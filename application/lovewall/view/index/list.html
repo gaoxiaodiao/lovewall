@@ -1,0 +1,51 @@
+{include file="Common/header" /}
+<script type="text/javascript">
+<!--
+function find(){
+	var noStr = document.getElementById("find").value;
+	var no = parseInt(noStr);
+	if(isNaN(no)){
+		alert("[字条编号]肯定是数字啊");
+		return;
+	}else if(no < 1){
+		alert("[字条编号]肯定是整数啊");
+		return;
+	}else{
+		window.location.href = "default.asp?id="+no;		
+	}
+}
+//-->
+</script>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="1" class="List">
+	<tr>
+		<th>字条编号</th>
+		<th>字条内容</th>
+		<th>发送人</th>
+		<th>接收人</th>
+		<th>日期</th>
+	</tr>
+	
+	{volist name="list" id="vo"}
+	<tr class="tr">
+		<td class="ListA">{$vo.id}</td>
+		<td class="ListB">
+			<a href="{:url('index',['id'=>$vo['id']])}">{$vo.info}</a>
+			{if condition="($islogin == true)"} <a href="{:url('admin/erase',['id'=>$vo['id']])}"> <img src="/static/images/close.gif" alt="删除"></a>{/if}
+		</td>
+		<td class="ListC">{$vo.name}</td>
+		<td class="ListC">{$vo.receiver}</td>
+		<td class="ListD">{$vo.time|date="Y-m-d H:m:s",###}</td>
+	</tr>
+	{/volist}
+	<tr>
+		<td colspan="5" class="ListP">
+		{if condition="($islogin == true)"}
+			<a href="{:url('admin/quit')}">注销</a>
+		{/if}
+			（字条总数：1） <strong>1</strong>......<strong>1</strong><br>
+
+		</td>
+	</tr>
+</table>
+{include file="Common/footer" /}

@@ -1,0 +1,75 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>ASPK::Login</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+<!-- 
+body{font:12px Verdana,"sans-serif";color:#333;margin:100px;text-align:center;}
+table{background:#F6FFDA;border:1px solid #70b817}
+th{color:#fff;font-size:14px;background:#70b817;text-align:center;border:1px solid #fff}
+td{text-align:left;}
+a{color:#70b817;}
+a:hover{color:#ff3992;}
+-->	
+</style>
+<script type="text/javascript">
+<!--
+function check(obj){
+    if(obj.username.value==""){
+        alert("请填写[用户名]");
+        obj.username.focus();
+        return false;
+    }
+	if(obj.password.value==""){
+        alert("请填写[密码]");
+        obj.password.focus();
+        return false;
+    }
+    if(obj.key.value==""){
+        alert("请输入[验证码]");
+        obj.key.focus();
+        return false;
+    }else{
+		var noStr = obj.key.value;
+		var no = parseInt(noStr);
+		if(isNaN(no)){
+			alert("[验证码]必须是数字");
+			return false;
+		}else if(no < 1){
+			alert("[验证码]必须是正数");
+			return false;
+		}
+	}
+	frmLogin.submit.disabled=true;
+    return true;
+}
+//-->
+</script>
+</head>
+
+<body>
+<table width="300px" border="0" cellpadding="8" cellspacing="0">
+	<tr>
+		<th colspan="2">欢迎使用爱墙</th>
+	</tr>
+	<form method="post" action="{:url('admin/admin')}" name="frmLogin" onsubmit="return check(this)">
+	<tr>
+		<td>用户名</td>
+		<td><input name="username" type="text" value="" size="19" maxlength="14"/></td>
+	</tr>
+	<tr>
+		<td>密码</td>
+		<td><input name="password" type="password" value="" size="20" maxlength="14"/></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><input type="submit" value=" 提 交 " name="submit" /></td>
+	</tr>
+	</form>
+	<tr>
+		<td colspan="2">Powered by <a href="http://www.aspk.net/" target="_blank">aspk.net</a></td>
+	</tr>
+</table>
+</body>
+</html>
+
